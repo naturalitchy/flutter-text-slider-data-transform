@@ -24,9 +24,10 @@ void main() {
           toolbarTextStyle: TextStyle(
             fontWeight: fontWeight900,
             fontSize: 16.0,
-          )
+          ),
         ),
       ),
+
       home: RootScreen(),
     ),
   );
