@@ -26,7 +26,7 @@ class _TextInputScreenState extends State<TextInputScreen> {
   }
   void initFirstTextFieldVar(String str) {
     firstTextField = str;
-    print('@@@@@@@@@@@@@');
+    print('firstTextField = ${firstTextField}');
   }
 
   @override
@@ -46,7 +46,6 @@ class _TextInputScreenState extends State<TextInputScreen> {
             TextField(
               controller: textEditingController,
               decoration: InputDecoration(
-                // suffix: Text('hhhh', style: TextStyle(color: Colors.red,),),
                 border: OutlineInputBorder(),
                 hintText: 'Welcome..',
                 label: Text('Please input the text'),
@@ -55,11 +54,11 @@ class _TextInputScreenState extends State<TextInputScreen> {
             ),
             SizedBox(height: 50.0,),
             TextField(
+              controller: textEditingController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'I dont know',
                 label: Text('I didnt know that'),
-                prefix: Text(firstTextField),
               ),
             )
           ],
