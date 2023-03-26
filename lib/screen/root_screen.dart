@@ -18,17 +18,26 @@ class RootScreen extends StatefulWidget {
 }
 
 class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
+  /*
   int _tabNumber = 0;
   List<Widget> _pages = <Widget> [
     HomeScreen(),
     TextInputScreen(),
     SliderInputScreen(),
   ];
+  */
 
   // Setting the PageController.
   final PageController _pageController = PageController();
   // Setting the TabController.
   TabController? _tabController;
+
+
+  tabControllerListen() {
+    setState(() {
+      print('Tab 옆으로 움직였구나 !!!!!!!!!! ');
+    });
+  }
 
   // Initialize the PageController.
   @override
@@ -37,6 +46,7 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
     super.initState();
     // Must be add with TickerProviderStateMixin class.
     _tabController = TabController(length: 4, vsync: this);
+    _tabController!.addListener(tabControllerListen);
 
     Timer.periodic(
       Duration(seconds: 3),
@@ -63,15 +73,18 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
     );
   }
 
-  void nothing() {
-
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _tabController!.removeListener(tabControllerListen);
   }
 
-  void tabClicked(int num) {
-    setState(() {
-      _tabNumber = num;
-    });
-  }
+  // void tabClicked(int num) {
+  //   setState(() {
+  //     _tabNumber = num;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +102,7 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
         onTap: (int index) {
           setState(() {
             _tabController!.animateTo(index);
+            print(' #### => ${index}');
           });
         },
         items: [
@@ -126,11 +140,14 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
           Icons.home,
         ),
         onPressed: () {
-
-          tabClicked(0);
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => RootScreen()
+            ),
+          );
         },
       ),
-      title: Text('I think...'),
+      title: Text('I think #'),
       actions: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -142,14 +159,17 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
                     builder: (_) => TextInputScreen(),
                   ),
                 );
-                tabClicked(1);
               },
               child: Text('Text'),
             ),
             SizedBox(width: 10.0,),
             ElevatedButton(
               onPressed: () {
-                tabClicked(2);
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => SliderInputScreen(),
+                  ),
+                );
               },
               child: Text('Slider'),
             ),
@@ -182,21 +202,30 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
           flex: 4,
           child: Container(
             color: secondColor,
-            child: Center(
-              child: Text(' Im Root Screen. Column 2st.'),
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                TextResultScreen(),
+                SliderResultScreen(),
+                TextResultScreen(),
+                SliderResultScreen(),
+              ],
             ),
           ),
           /*
           child: Container(
-            padding: EdgeInsets.all(30),
             color: secondColor,
-            child: _pages[_tabNumber],
+            child: Center(
+              child: Text(' Im Root Screen. Column 2st.'),
+            ),
           ),
           */
+
         ),
       ],
     );
 
+    /*
     return Column(
       children: [
         // =============== Column 1 ===============
@@ -237,6 +266,7 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
         ),
       ],
     );
+    */
 
 
   }

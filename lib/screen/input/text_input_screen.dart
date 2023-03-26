@@ -41,6 +41,11 @@ class _TextInputScreenState extends State<TextInputScreen> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Text Input page.'),
+        centerTitle: true,
+        backgroundColor: firstColor,
+      ),
       body: Container(
         color: secondColor,
         padding: EdgeInsets.all(30),
