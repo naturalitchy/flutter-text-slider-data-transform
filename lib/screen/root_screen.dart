@@ -126,6 +126,7 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
           Icons.home,
         ),
         onPressed: () {
+
           tabClicked(0);
         },
       ),
@@ -136,9 +137,11 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
           children: [
             ElevatedButton(
               onPressed: () {
-                // Navigator.of(context).push(
-                //   MaterialPageRoute(builder: (_) => TextInputScreen()),
-                // );
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => TextInputScreen(),
+                  ),
+                );
                 tabClicked(1);
               },
               child: Text('Text'),
@@ -159,6 +162,40 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
 
   // Setting the body in Scaffold.
   Widget bodySetting() {
+
+    return Column(
+      children: [
+        Flexible(
+          flex: 2,
+          child: Container(
+            padding: EdgeInsets.all(30),
+            color: Colors.yellow,
+            child: PageView(
+              controller: _pageController,
+              children: [1,2,3,4,5].map(
+                    (number) => Image.asset('asset/img/image_${number}.jpeg', fit: BoxFit.cover,),
+              ).toList(),
+            ),
+          ),
+        ),
+        Flexible(
+          flex: 4,
+          child: Container(
+            color: secondColor,
+            child: Center(
+              child: Text(' Im Root Screen. Column 2st.'),
+            ),
+          ),
+          /*
+          child: Container(
+            padding: EdgeInsets.all(30),
+            color: secondColor,
+            child: _pages[_tabNumber],
+          ),
+          */
+        ),
+      ],
+    );
 
     return Column(
       children: [
@@ -189,18 +226,19 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
           ],
         ),
         // =============== Column 2 ===============
-
-        // TabBarView(
-        //   controller: _tabController,
-        //   children: [
-        //     TextResultScreen(),
-        //     SliderResultScreen(),
-        //     TextResultScreen(),
-        //     SliderResultScreen(),
-        //   ],
-        // ),
+        TabBarView(
+          controller: _tabController,
+          children: [
+            TextResultScreen(),
+            SliderResultScreen(),
+            TextResultScreen(),
+            SliderResultScreen(),
+          ],
+        ),
       ],
     );
+
+
   }
 
 }

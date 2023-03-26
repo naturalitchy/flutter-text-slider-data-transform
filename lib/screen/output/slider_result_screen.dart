@@ -6,6 +6,14 @@ class SliderResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Center(
+        child: Text('H eeee eee,',
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
+      ),
+    );
   }
 }

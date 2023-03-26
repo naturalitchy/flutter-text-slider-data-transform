@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:text_transform/const/colors.dart';
 
 class TextInputScreen extends StatefulWidget {
   const TextInputScreen({Key? key}) : super(key: key);
@@ -38,6 +39,39 @@ class _TextInputScreenState extends State<TextInputScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    return Scaffold(
+      body: Container(
+        color: secondColor,
+        padding: EdgeInsets.all(30),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextField(
+                controller: textEditingController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Welcome..',
+                  label: Text('Please input the text'),
+                  contentPadding: EdgeInsets.only(left: 20.0),
+                ),
+              ),
+              SizedBox(height: 50.0,),
+              TextField(
+                controller: textEditingController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'I dont know',
+                  label: Text('I didnt know that'),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+
     return Container(
       // color: Colors.white,
       child: Center(
