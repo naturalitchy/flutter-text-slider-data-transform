@@ -6,6 +6,13 @@ class TextResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      padding: EdgeInsets.only(left: 50, right: 50, top: 100, bottom: 100),
+      child: Column(
+        children: [
+
+        ],
+      ),
+    );
   }
 }
