@@ -10,7 +10,9 @@ import 'package:text_transform/screen/input/slider_input_screen.dart';
 import 'package:text_transform/screen/output/slider_result_screen.dart';
 import 'package:text_transform/screen/output/text_result_screen.dart';
 
+
 class RootScreen extends StatefulWidget {
+
   const RootScreen({Key? key}) : super(key: key);
 
   @override
@@ -26,6 +28,8 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
     SliderInputScreen(),
   ];
   */
+
+
 
   // Setting the PageController.
   final PageController _pageController = PageController();
@@ -90,6 +94,7 @@ class _RootScreenState extends State<RootScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     // 상태바 색상 변경. 상태바가 어디를 말하는거임... 색상도 안변함. 맨 위의 그 와이파이 있고 그 부분이네.
     // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    print(' ##########@@@@@@@@@####### => ${RootScreen.staticStr}');
 
     return Scaffold(
       appBar: appBarSetting(),

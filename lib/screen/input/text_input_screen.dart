@@ -3,9 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:text_transform/const/colors.dart';
+import 'package:text_transform/screen/root_screen.dart';
+import 'package:text_transform/static/static_variable.dart';
 
 class TextInputScreen extends StatefulWidget {
   const TextInputScreen({Key? key}) : super(key: key);
+
 
   @override
   State<TextInputScreen> createState() => _TextInputScreenState();
@@ -15,6 +18,7 @@ class _TextInputScreenState extends State<TextInputScreen> {
 
   final TextEditingController textEditingController = TextEditingController();
   String firstTextField = "";
+
 
   @override
   void initState() {
@@ -27,7 +31,6 @@ class _TextInputScreenState extends State<TextInputScreen> {
   }
   void initFirstTextFieldVar(String str) {
     firstTextField = str;
-    print('firstTextField = ${firstTextField}');
   }
 
   @override
@@ -39,6 +42,8 @@ class _TextInputScreenState extends State<TextInputScreen> {
 
   @override
   Widget build(BuildContext context) {
+    StaticVariable.staticStr = textEditingController.text;
+    print('staticStr = ${RootScreen.staticStr}');
 
     return Scaffold(
       appBar: AppBar(
